@@ -19,5 +19,4 @@ Typically at http://localhost:3000/
 
 ## Author
 
-Kyle Español
-[@kylekce](https://github.com/kylekce)
+Shubham kumar
