@@ -56,3 +56,7 @@ The updated greeting will be stored on the blockchain, and the page will display
 ## Author
 
 Shubham kumar
+
+## License
+
+This project is licensed under the MIT License - see the License.md file for details.
