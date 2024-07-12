@@ -62,7 +62,7 @@ export default function HomePage() {
   const PositiveRating = async() => {
     if (atm) {
       const Rate = document.getElementById("amount").value;
-      let tx = await atm.deposit(Rate);
+      let tx = await atm.Positiverating(Rate);
       await tx.wait()
       getBalance();
     }
@@ -71,7 +71,7 @@ export default function HomePage() {
   const NegativeRating = async() => {
     if (atm) {
       const Rate = document.getElementById("amount").value;
-      let tx = await atm.withdraw(Rate);
+      let tx = await atm.Negativerating(Rate);
       await tx.wait()
       getBalance();
     }
