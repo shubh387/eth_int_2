@@ -3,58 +3,58 @@ pragma solidity ^0.8.9;
 
 //import "hardhat/console.sol";
 
-contract Assessment {
+contract RatingSystem {
     address payable public owner;
-    uint256 public balance;
+    uint256 public Rating;
 
-    event Deposit(uint256 amount);
-    event Withdraw(uint256 amount);
+    event PositiveRating(uint256 Grade);
+    event NegativeRating(uint256 Grade);
 
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
-        balance = initBalance;
+         Rating= initBalance;
     }
 
     function getBalance() public view returns(uint256){
-        return balance;
+        return Rating;
     }
 
-    function deposit(uint256 _amount) public payable {
-        uint _previousBalance = balance;
+    function PositiveRating(uint256 _Grade) public payable {
+        uint _PreviousRating = Rating;
 
         // make sure this is the owner
         require(msg.sender == owner, "You are not the owner of this account");
 
         // perform transaction
-        balance += _amount;
+        Rating += _Grade;
 
         // assert transaction completed successfully
-        assert(balance == _previousBalance + _amount);
+        assert(Rating == _PreviousRating + _Grade);
 
         // emit the event
-        emit Deposit(_amount);
+        emit PositiveRating(_Grade);
     }
 
     // custom error
-    error InsufficientBalance(uint256 balance, uint256 withdrawAmount);
+    error InsufficientRating(uint256 Rating, uint256 NegativeRatingGrade);
 
-    function withdraw(uint256 _withdrawAmount) public {
+    function NegativeRating(uint256 _NegativeRatingGrade) public {
         require(msg.sender == owner, "You are not the owner of this account");
-        uint _previousBalance = balance;
-        if (balance < _withdrawAmount) {
+        uint _PreviousRating = Rating;
+        if (Rating < _NegativeRatingGrade) {
             revert InsufficientBalance({
-                balance: balance,
-                withdrawAmount: _withdrawAmount
+                Rating: Rating,
+                NegativeRatingGrade: _NegativeRatingGrade
             });
         }
 
-        // withdraw the given amount
-        balance -= _withdrawAmount;
+        // NegativeRating the given Grade
+        Rating -= _NegativeRatingGrade;
 
-        // assert the balance is correct
-        assert(balance == (_previousBalance - _withdrawAmount));
+        // assert the Rating is correct
+        assert(Rating == (_PreviousRating - _NegativeRatingGrade));
 
         // emit the event
-        emit Withdraw(_withdrawAmount);
+        emit NegativeRating(_NegativeRatingGrade);
     }
 }
