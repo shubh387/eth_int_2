@@ -1,4 +1,4 @@
-# Smart Contract Integration with Frontend
+# Rating System with Frontend
 This project demonstrates the integration of a smart contract with a frontend application using Ethereum, React, and Hardhat.
 
 # Smart Contract
